@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "@types/google-apps-script": "^1.0.56"
+  },
+  "devDependencies": {
+    "jest": "^29.3.1"
+  },
+  "licence": "MIT",
+  "scripts": {
+    "test": "jest --watchAll"
+  }
+}
