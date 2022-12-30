@@ -14,5 +14,14 @@ module.exports = {
     moduleDirectories: [
       "node_modules",
       "app"
-    ]
+    ],
+    modulePathIgnorePatterns: [
+      "dist"
+    ],
+    testMatch: [
+      "**/app/**/*.test.ts",
+    ],
+    transform: {
+      "^.+\\.ts$": "ts-jest",
+    },
 };
