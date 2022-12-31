@@ -1,23 +1,5 @@
-import { Transaction, CSVHandler } from "./csv";
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-declare let global: any;
-
-global._debug = (): void => {
-  console.log("Hello World!")
-  const imp = new Importer(DriveApp);
-  const csvData = imp.readFileFromGDrive("web.xlsx.csv")
-  console.log(csvData);
-  const painter = new Painter(SpreadsheetApp)
-
-  const csv = new CSVHandler(Utilities);
-  const data = csv.parse(csvData)
-  painter.paintRows(data)
-};
-
-const config = {
-  transactionSheetName: "Tranzakciók"
-}
+import Transaction from "./transaction";
+import { Config } from "./config";
 
 interface SimplifiedDriveApp {
   getFilesByName: (filename: string) => any;
@@ -77,14 +59,12 @@ export class Painter {
   }
 
   transactionSheet(): SimplifiedSheet {
-    return this.spreadsheet.getSheetByName(config.transactionSheetName);
+    return this.spreadsheet.getSheetByName(Config.transactionSheetName);
   }
 
   paintRows(transactions: Transaction[]) {
     const sheet = this.transactionSheet()
-    //console.log(transactions)
-    transactions.forEach((tr) => {
-      //console.log(tr);
+    transactions.forEach((tr: Transaction) => {
       sheet.appendRow(tr.export());
     }); 
   }
