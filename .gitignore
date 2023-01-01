@@ -1,5 +1,7 @@
 dist/*
 !dist/appsscript.json
+!dist/filePicker.html
 node_modules
+__snapshots__
 yarn.lock
 package-lock.json

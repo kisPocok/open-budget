@@ -8,7 +8,6 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, 'dist')
-    // format: 'cjs'
   },
   module: {
     rules: [
