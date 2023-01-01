@@ -5,12 +5,13 @@ OpenBudget imports Bank statments to Google Spreadsheet easily. It's built on Go
 ## What does it do?
 
 OpenBudget creates a Spreadsheet menu item called "Budget"
-<img src="./images/preview-menu.png">
 
-----
+<img src="./images/preview-menu.png" alt="Preview of a menu item" width="42%">
+
 
 Currently, it supports two providers (OTP, Revolut). By clicking on one of the import item you can browse for CSV files in your Google Drive. By selecting one it will be imported to your spreadsheet.
-<img src="./images/preview-filepicker.png">
+
+<img src="./images/preview-filepicker.png" alt="Preview of file selector" width="42%">
 
 AutoImporter guesses Bank provider by filename (checkout `app/config.ts` for more details) and import them. Only your Google Drive root directory will be scanned and imported. Data does not shared by third party provider.
 
