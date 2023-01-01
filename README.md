@@ -26,15 +26,17 @@ For development use `npm run test` to run tests locally. Google's classes are no
 To deploy the codebase use `npm run deploy`. Before you do so, please follow the article below to setup `clasp`on your host.
 https://medium.com/geekculture/how-to-write-google-apps-script-code-locally-in-vs-code-and-deploy-it-with-clasp-9a4273e2d018
 
-Build, test and deploy use watcher too. Any code change will be built & delivered right away. 
+## Hint
+
+Build, test and deploy uses file watchers. In 3 different terminal, run build, test and deploy simultaneously. Any code change will be built, tested and  delivered upstream right away.
 
 ## Configuration
 
 1. Open `app/config.ts` file.
 2. Add your own `developerKey` there
-3. Your bank is not supported yet? Create your own converter and create a pull request.
+3. Your bank is not supported yet? Create your own converter and create a pull request to this repo
 
-## Support another Banks
+## Support another bank format
 
 1. Open `app/config.ts` and extend your `availableConverters` list
 2. Create a copy of `converter/converter-revolut.ts` and adust to your own bank account (you have to map your csv to the `Transaction` model)
