@@ -3,7 +3,6 @@ interface Converter {
   class: string
   filePatternRegex: RegExp
 }
-
 interface ConfigDataset {
   developerKey: string
   transactionSheetName: string
