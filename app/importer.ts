@@ -25,12 +25,6 @@ export class Importer {
     }
   }
 
-  applyOnSheet(csvData: string) {
-    // var range = _getTransactionsSheet().getRange(
-    //   _getFirstEmptyRowByColumnArray(), 1, csvData.length, csvData[0].length)
-    // range.setValues(csvData)
-  }
-
   importFailed(reason: string, err: any) {
     console.log(reason, err)
   }
@@ -65,7 +59,13 @@ export class Painter {
   paintRows(transactions: Transaction[]) {
     const sheet = this.transactionSheet()
     transactions.forEach((tr: Transaction) => {
-      sheet.appendRow(tr.export());
+      sheet.appendRow(tr.export()); // TODO performance issue
     }); 
   }
+
+  // applyOnSheet(csvData: string) {
+  //   var range = this.transactionSheet().getRange(
+  //     _getFirstEmptyRowByColumnArray(), 1, csvData.length, csvData[0].length)
+  //   range.setValues(csvData)
+  // }
 }

@@ -1,4 +1,9 @@
 import Transaction from "./transaction";
+import * as Converters from "./converter/";
+
+export const CreateTransactionFormatterByClassName = (className: string): TransactionFormatter => {
+    return new (<any>Converters)[className]();
+  } 
 
 export interface TransactionFormatter {
     format(rawTransaction: string): Transaction
