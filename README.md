@@ -26,7 +26,7 @@ For development use `npm run test` to run tests locally. Google's classes are no
 To deploy the codebase use `npm run deploy`. Before you do so, please follow the article below to setup `clasp`on your host.
 https://medium.com/geekculture/how-to-write-google-apps-script-code-locally-in-vs-code-and-deploy-it-with-clasp-9a4273e2d018
 
-## Hint
+### Hint
 
 Build, test and deploy uses file watchers. In 3 different terminal, run build, test and deploy simultaneously. Any code change will be built, tested and  delivered upstream right away.
 
