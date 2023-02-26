@@ -16,7 +16,7 @@
   },
   "licence": "MIT",
   "scripts": {
-    "test": "jest --watchAll",
+    "test": "jest --coverage --watchAll",
     "deploy": "clasp push -w",
     "build": "webpack -w --mode development",
     "build:debug": "tsc -w"
