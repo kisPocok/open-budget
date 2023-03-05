@@ -1,6 +1,7 @@
 dist/*
 !dist/appsscript.json
 !dist/filePicker.html
+dist-ts/*
 node_modules
 coverage/*
 __snapshots__

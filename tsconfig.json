@@ -2,7 +2,7 @@
     "compileOnSave": true,
     "compilerOptions": {
         "rootDir": "app",
-        "outDir": "dist",
+        "outDir": "dist-ts",
         "target": "es2019",
         "lib": [
             "es2019",
@@ -17,6 +17,7 @@
     "exclude": [
         "node_modules",
         "dist",
+        "dist-ts",
         "app/**/*.test.ts",
         "app/**/mocks/*.ts"
     ]
