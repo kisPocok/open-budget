@@ -1,7 +1,7 @@
-import Transaction from './transaction';
-import { Importer, Painter } from './importer';
-import { MockDriveApp } from './mocks/DriveApp';
-import { MockSheet } from './mocks/Spreadsheet';
+import Transaction from '../transaction';
+import { Importer, Painter } from '../importer';
+import { MockDriveApp } from '../mocks/DriveApp';
+import { MockSheet } from '../mocks/Spreadsheet';
 import { SpreadsheetApp } from 'gasmask';
 
 const filename = "example-filename";

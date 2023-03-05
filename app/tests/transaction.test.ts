@@ -1,4 +1,4 @@
-import Transaction from "./transaction";
+import Transaction from "../transaction";
 
 const d = "2017-11-30";
 const date = new Date(d);

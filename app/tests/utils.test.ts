@@ -1,4 +1,4 @@
-import { dateToYYYYMMDD, skipTheFirstLine } from "./utils";
+import { dateToYYYYMMDD, skipTheFirstLine } from "../utils";
 
 const exampleDate = "2017-11-30"
 const text = "First line\nSecond line\nThird Line";

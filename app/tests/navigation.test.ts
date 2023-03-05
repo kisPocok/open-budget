@@ -1,4 +1,4 @@
-import CreateMenuButton from "./navigation";
+import CreateMenuButton from "../navigation";
 
 beforeEach(() => {
     jest.restoreAllMocks();

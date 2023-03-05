@@ -1,4 +1,4 @@
-import { findConverter } from './autoimport'
+import { findConverter } from '../autoimport'
 
 interface Converter {
     name: string
