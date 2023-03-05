@@ -18,7 +18,7 @@
   "licence": "MIT",
   "scripts": {
     "lint": "prettier --check ./app/**/*.ts",
-    "lint-fix": "prettier --write ./src/**/*.ts",
+    "lint-fix": "prettier --write ./app/**/*.ts",
     "test": "jest --coverage --watchAll",
     "deploy": "clasp push -w",
     "build": "webpack -w --mode development",

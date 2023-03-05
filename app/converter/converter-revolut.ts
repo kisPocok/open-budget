@@ -1,5 +1,5 @@
-import Transaction from "../transaction";
-import { TransactionFormatter } from "../transactionFormatter";
+import Transaction from '../transaction'
+import { TransactionFormatter } from '../transactionFormatter'
 
 export default class Revolut /*extends BaseTransactionFormatter*/ implements TransactionFormatter {
     format(rawData: string): Transaction {
@@ -11,14 +11,14 @@ export default class Revolut /*extends BaseTransactionFormatter*/ implements Tra
             category: rawData[6],
             summary: rawData[7],
             expense: amount < 0 ? Math.abs(amount) : 0,
-            income: amount > 0 ? amount : 0,
-        });
+            income: amount > 0 ? amount : 0
+        })
     }
-    
+
     priceToInt(price: string): number {
         if (!price) {
-            return 0;
+            return 0
         }
-        return +price.replace(/\s/g, "").trim();
+        return +price.replace(/\s/g, '').trim()
     }
 }
