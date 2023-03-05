@@ -11,7 +11,7 @@ export default class Revolut /*extends BaseTransactionFormatter*/ implements Tra
             category: rawData[6],
             summary: rawData[7],
             expense: amount < 0 ? Math.abs(amount) : 0,
-            income: amount > 0 ? amount : 0
+            income: amount > 0 ? amount : 0,
         })
     }
 
