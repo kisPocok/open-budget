@@ -19,6 +19,7 @@
     "test": "jest --coverage --watchAll",
     "deploy": "clasp push -w",
     "build": "webpack -w --mode development",
-    "build:debug": "tsc -w"
+    "build:debug": "tsc -w",
+    "cleanup": "find . -path './dist/*' -a ! \\( -type d -o -name '*.json' -o -name '*.html' -o -name 'dist' \\) -exec rm -f {} +"
   }
 }
