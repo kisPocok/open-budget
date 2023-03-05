@@ -1,4 +1,5 @@
 import { CSVHandler } from "./csv";
+import { getTransactions } from "./categorizer";
 import { Config } from "./config";
 import { Importer, Painter } from "./importer";
 import { CreateTransactionFormatterByClassName as CreateTransactionConverterByClassName } from "./transactionFormatter";
@@ -8,10 +9,20 @@ import CreateMenuButton from "./navigation";
 import convertXLStoCSV from "./convertXLStoCSV";
 import autoImportRootCSVs from "./autoimport";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare let global: any;
+
+global._debug = (): void => {
+  console.log("Debugging...")
+  const painter = new Painter(SpreadsheetApp)
+  const trs = getTransactions(painter)
+  console.log(trs[0])
+}
+
 function onOpen() {
-  Config.availableConverters.forEach((conv) => {
-    const callbackName = "import_" + conv.class
-    global[callbackName] = () => filePicker(conv.name, conv.class)()
+  Config.availableConverters.forEach((c) => {
+    const callbackName = "import_" + c.class
+    global[callbackName] = () => filePicker(c.name, c.class)()
   })
   return CreateMenuButton(Config, SpreadsheetApp)
 }
@@ -20,12 +31,6 @@ function onEdit(e: any) {
   console.log("Spreadsheet edited")
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-declare let global: any;
-
-global._debug = (): void => {
-  console.log("Hello world!")
-}
 global.onOpen = onOpen()
 global.onEdit = onEdit
 global.autoImportRootCSVs = () => autoImportRootCSVs(Config, importFile)
@@ -39,8 +44,8 @@ global.getOAuthToken = () => {
 const importFile = (fileName: string, converterClassName: string): boolean => {
   try {
     const imp = new Importer(DriveApp);
-    const csvData = imp.readFileFromGDrive(fileName)
     const csv = new CSVHandler(Utilities);
+    const csvData = imp.readFileFromGDrive(fileName)
     const converter = CreateTransactionConverterByClassName(converterClassName)
     const data = csv.parse(skipTheFirstLine(csvData), converter)
     const painter = new Painter(SpreadsheetApp)

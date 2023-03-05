@@ -1,4 +1,4 @@
-import { TransactionFormatter } from "./transactionFormatter";
+import { TransactionFormatter } from "./types/transaction";
 
 export interface GoogleUtilities {
     parseCsv(s: string): string[][]

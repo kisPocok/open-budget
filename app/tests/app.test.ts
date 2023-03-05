@@ -1,4 +1,4 @@
-import * as Converters from "./converter/";
+import * as Converters from "../converter";
 
 test('Menu creation', () => {
     // console.log(rev === new Converters.Revolut())

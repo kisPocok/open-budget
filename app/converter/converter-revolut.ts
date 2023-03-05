@@ -1,5 +1,5 @@
 import Transaction from '../transaction'
-import { TransactionFormatter } from '../transactionFormatter'
+import { TransactionFormatter } from '../types/transaction'
 
 export default class Revolut /*extends BaseTransactionFormatter*/ implements TransactionFormatter {
     format(rawData: string): Transaction {

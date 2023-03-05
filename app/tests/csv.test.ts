@@ -2,7 +2,7 @@ import { CSVHandler } from "../csv";
 import { MockUtilities } from "../mocks/Utilities";
 import { BaseTransactionFormatter } from "../transactionFormatter";
 import Transaction from "../transaction";
-import * as Converters from "../converter/";
+import * as Converters from "../converter";
 
 const csvData: string[][] = [
     [

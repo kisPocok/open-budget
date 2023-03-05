@@ -38,6 +38,7 @@ interface SimplifiedSpreadsheet {
 }
 export declare interface SimplifiedSheet {
   appendRow: (s: Object[]) => any;
+  getRange: (s: string) => any;
 }
 
 export class Painter {
@@ -61,6 +62,11 @@ export class Painter {
     transactions.forEach((tr: Transaction) => {
       sheet.appendRow(tr.export()); // TODO performance issue
     }); 
+  }
+
+  readRows(coordinates: string) {
+    const sheet = this.transactionSheet()
+    return sheet.getRange(coordinates).getValues();
   }
 
   // applyOnSheet(csvData: string) {

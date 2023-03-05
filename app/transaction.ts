@@ -1,15 +1,7 @@
 import { dateToYYYYMMDD } from "./utils";
+import { TransactionData, TransactionPlan } from "./types/transaction";
 
-interface TransactionData {
-    dueDate: Date;
-    account: string;
-    category: string;
-    summary: string;
-    expense: number;
-    income: number;
-}
-
-export default class Transaction {
+export default class Transaction implements TransactionData, TransactionPlan {
     dueDate!: Date;
     account: string = "";
     category: string = "";

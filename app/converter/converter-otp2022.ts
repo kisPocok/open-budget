@@ -1,5 +1,5 @@
 import Transaction from '../transaction'
-import { TransactionFormatter } from '../transactionFormatter'
+import { TransactionFormatter } from '../types/transaction'
 
 export default class OTP2022 /*extends BaseTransactionFormatter*/ implements TransactionFormatter {
     format(rawData: string): Transaction {
