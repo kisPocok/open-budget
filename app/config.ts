@@ -6,6 +6,7 @@ interface Converter {
 interface ConfigDataset {
   developerKey: string
   transactionSheetName: string
+  transactionCoordinates: string
   autoConvertXLSfiles: boolean
   autoRemoveConvertedFiles: boolean
   availableConverters: Converter[]
@@ -32,5 +33,7 @@ export const Config:ConfigDataset = {
 
   // Name of the transaction sheet (you have to update it if you rename the sheet on the UI!)
   transactionSheetName: "Tranzakciók",
-  
+
+  // Data location int the transaction sheet
+  transactionCoordinates: "A2:F",
 }

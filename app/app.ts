@@ -1,7 +1,8 @@
 import { CSVHandler } from "./csv";
 import { getTransactions } from "./categorizer";
 import { Config } from "./config";
-import { Importer, Painter } from "./importer";
+import { Importer } from "./importer";
+import { Painter } from "./painter";
 import { CreateTransactionFormatterByClassName as CreateTransactionConverterByClassName } from "./transactionFormatter";
 import { filePicker } from "./ui";
 import { skipTheFirstLine } from "./utils";

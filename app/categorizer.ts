@@ -1,4 +1,5 @@
-import { Painter } from "./importer";
+import { Config } from "./config";
+import { Painter } from "./painter";
 import Transaction from "./transaction";
 
 /*
@@ -14,8 +15,7 @@ export class Categorizer {
 */
 
 export function getTransactions(painter: Painter): Transaction[] {
-    //const painter = new Painter(SpreadsheetApp)
-    const db = painter.readRows("A2:F") // whole page
+    const db = painter.readRows(Config.transactionCoordinates) // whole page
     return db.map((r: (Date | string | number)[]) => new Transaction({
             dueDate: new Date(r[0]),
             account: r[1],

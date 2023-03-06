@@ -1,5 +1,6 @@
 import Transaction from '../transaction';
-import { Importer, Painter } from '../importer';
+import { Importer } from '../importer';
+import { Painter } from '../painter';
 import { MockDriveApp } from '../mocks/DriveApp';
 import { MockSheet } from '../mocks/Spreadsheet';
 import { SpreadsheetApp } from 'gasmask';
