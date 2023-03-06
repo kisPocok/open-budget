@@ -1,12 +1,12 @@
 export interface SimplifiedSpreadsheetApp {
-    getActiveSpreadsheet: () => SimplifiedSpreadsheet;
+    getActiveSpreadsheet: () => SimplifiedSpreadsheet
 }
 
 export interface SimplifiedSpreadsheet {
-    getSheetByName: (s: string) => any; // should be SimplifiedSheet
+    getSheetByName: (s: string) => any // should be SimplifiedSheet
 }
 
 export interface SimplifiedSheet {
-    appendRow: (s: Object[]) => any;
-    getRange: (s: string) => any;
+    appendRow: (s: Object[]) => any
+    getRange: (s: string) => any
 }

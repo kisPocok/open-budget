@@ -1,27 +1,27 @@
-import Transaction from "../transaction";
+import Transaction from '../transaction'
 
-const d = "2017-11-30";
-const date = new Date(d);
-const account = "dummy-account"
-const category = "dummy-category"
-const summary = "dummy-summary"
+const d = '2017-11-30'
+const date = new Date(d)
+const account = 'dummy-account'
+const category = 'dummy-category'
+const summary = 'dummy-summary'
 const income = 100
 const expense = 250
 
 beforeEach(() => {
-    jest.restoreAllMocks();
-});
+    jest.restoreAllMocks()
+})
 
 test('Empty transaction looks like', () => {
     const tr = new Transaction({})
-    expect(tr.getDueDate()).toBe("")
-    expect(tr.account).toBe("")
-    expect(tr.category).toBe("")
-    expect(tr.summary).toBe("")
+    expect(tr.getDueDate()).toBe('')
+    expect(tr.account).toBe('')
+    expect(tr.category).toBe('')
+    expect(tr.summary).toBe('')
     expect(tr.income).toBe(0)
     expect(tr.expense).toBe(0)
     expect(tr.confirmed).toBeFalsy()
-});
+})
 
 test('Populated transaction looks like', () => {
     const tr = new Transaction({
@@ -40,4 +40,4 @@ test('Populated transaction looks like', () => {
     expect(tr.income).toBe(income)
     expect(tr.expense).toBe(expense)
     expect(tr.confirmed).toBeFalsy()
-});
+})

@@ -1,4 +1,4 @@
-import { SimplifiedSheet } from "../types/spreadsheet"
+import { SimplifiedSheet } from '../types/spreadsheet'
 
 export class MockSheet implements SimplifiedSheet {
     appendRow(s: Object[]): SimplifiedSheet {

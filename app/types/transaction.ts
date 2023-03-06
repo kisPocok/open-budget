@@ -1,10 +1,10 @@
 export interface TransactionData {
-    dueDate: Date;
-    account: string;
-    category: string;
-    summary: string;
-    expense: number;
-    income: number;
+    dueDate: Date
+    account: string
+    category: string
+    summary: string
+    expense: number
+    income: number
 }
 
 export interface TransactionPlan {

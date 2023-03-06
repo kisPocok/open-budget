@@ -6,23 +6,19 @@ interface Converter {
     filePatternRegex: RegExp
 }
 
-const haystack = "almafa"
+const haystack = 'almafa'
 
-test("Finding the right type", () => {
-    const converter:Converter[] = [
-        {name: "dummy", class: "", filePatternRegex: new RegExp(/almafa/)}
-    ]
-    
+test('Finding the right type', () => {
+    const converter: Converter[] = [{ name: 'dummy', class: '', filePatternRegex: new RegExp(/almafa/) }]
+
     const find = findConverter(haystack, converter)
 
-    expect(find.name).toBe("dummy")
+    expect(find.name).toBe('dummy')
 })
 
-test("No match throws error", () => {
-    const converter:Converter[] = [
-        {name: "dummy", class: "", filePatternRegex: new RegExp(/no-match/)}
-    ]
-    
+test('No match throws error', () => {
+    const converter: Converter[] = [{ name: 'dummy', class: '', filePatternRegex: new RegExp(/no-match/) }]
+
     function findConverterNoMatch() {
         const find = findConverter(haystack, converter)
     }
@@ -30,14 +26,14 @@ test("No match throws error", () => {
     expect(findConverterNoMatch).toThrowErrorMatchingSnapshot()
 })
 
-test("Multiple result returns the first match", () => {
-    const converter:Converter[] = [
-        {name: "dummy-first", class: "", filePatternRegex: new RegExp(/no-match/)},
-        {name: "dummy-second", class: "", filePatternRegex: new RegExp(/almafa/)},
-        {name: "dummy-third", class: "", filePatternRegex: new RegExp(/almafa/)}
+test('Multiple result returns the first match', () => {
+    const converter: Converter[] = [
+        { name: 'dummy-first', class: '', filePatternRegex: new RegExp(/no-match/) },
+        { name: 'dummy-second', class: '', filePatternRegex: new RegExp(/almafa/) },
+        { name: 'dummy-third', class: '', filePatternRegex: new RegExp(/almafa/) },
     ]
-    
+
     const find = findConverter(haystack, converter)
 
-    expect(find.name).toBe("dummy-second")
+    expect(find.name).toBe('dummy-second')
 })
