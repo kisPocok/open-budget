@@ -1,8 +1,7 @@
 import { CSVHandler } from "./csv";
-import { getTransactions } from "./categorizer";
 import { Config } from "./config";
 import { Importer } from "./importer";
-import { Painter } from "./painter";
+import { Database } from "./database";
 import { CreateTransactionFormatterByClassName as CreateTransactionConverterByClassName } from "./transactionFormatter";
 import { filePicker } from "./ui";
 import { skipTheFirstLine } from "./utils";
@@ -15,8 +14,8 @@ declare let global: any;
 
 global._debug = (): void => {
   console.log("Debugging...")
-  const painter = new Painter(SpreadsheetApp)
-  const trs = getTransactions(painter)
+  const db = new Database(SpreadsheetApp)
+  const trs = db.getTransactions(Config.transactionCoordinates)
   console.log(trs[0])
 }
 
@@ -49,8 +48,7 @@ const importFile = (fileName: string, converterClassName: string): boolean => {
     const csvData = imp.readFileFromGDrive(fileName)
     const converter = CreateTransactionConverterByClassName(converterClassName)
     const data = csv.parse(skipTheFirstLine(csvData), converter)
-    const painter = new Painter(SpreadsheetApp)
-    painter.paintRows(data)
+    new Database(SpreadsheetApp).write(data)
     return true
 
   } catch(e: any) {

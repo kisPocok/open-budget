@@ -1,6 +1,6 @@
 import Transaction from '../transaction';
 import { Importer } from '../importer';
-import { Painter } from '../painter';
+import { Database } from '../database';
 import { MockDriveApp } from '../mocks/DriveApp';
 import { MockSheet } from '../mocks/Spreadsheet';
 import { SpreadsheetApp } from 'gasmask';
@@ -51,31 +51,31 @@ test('Run importer', () => {
     expect(imp.readFileFromGDrive("random-file-name")).toBe("Hello world!");
 });
 
-test('Painter expect to wrap SpreadsheetApp and Spreadsheet', () => {
+test('Database expect to wrap SpreadsheetApp and Spreadsheet', () => {
     const mockSpreadsheetApp = jest.spyOn(SpreadsheetApp, 'getActiveSpreadsheet');
-    const painter = new Painter(SpreadsheetApp)
-    const mockSpreadsheet = jest.spyOn(painter.spreadsheet, 'getSheetByName');
+    const db = new Database(SpreadsheetApp)
+    const mockSpreadsheet = jest.spyOn(db.spreadsheet, 'getSheetByName');
    
-    painter.transactionSheet();
+    db.transactionSheet();
 
     expect(mockSpreadsheetApp).toHaveBeenCalled();
     expect(mockSpreadsheet).toHaveBeenCalledWith("Tranzakciók"); // hardcoded
 });
 
-test('Painter append row', () => {
+test('Database append row', () => {
     const dummyCSV = [
         generateDummyTransaction("a"),
         generateDummyTransaction("b"),
         generateDummyTransaction("c")
     ]
     const mockSpreadsheetApp = jest.spyOn(SpreadsheetApp, 'getActiveSpreadsheet');
-    const painter = new Painter(SpreadsheetApp)
+    const db = new Database(SpreadsheetApp)
     const mockSheet = new MockSheet()
     jest.spyOn(mockSheet, "appendRow")
-    jest.spyOn(painter.spreadsheet, "getSheetByName")
+    jest.spyOn(db.spreadsheet, "getSheetByName")
         .mockReturnValue(mockSheet)
 
-    painter.paintRows(dummyCSV)
+    db.write(dummyCSV)
 
     dummyCSV.forEach((tr, index) => {
         expect(mockSheet.appendRow).toHaveBeenNthCalledWith(index+1, tr.export());

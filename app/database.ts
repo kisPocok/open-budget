@@ -2,7 +2,7 @@ import { Config } from "./config";
 import Transaction from "./transaction";
 import { SimplifiedSpreadsheetApp, SimplifiedSpreadsheet, SimplifiedSheet } from "./types/spreadsheet";
   
-export class Painter {
+export class Database {
     sapp: SimplifiedSpreadsheetApp;
     spreadsheet: SimplifiedSpreadsheet;
 
@@ -18,22 +18,34 @@ export class Painter {
         return this.spreadsheet.getSheetByName(Config.transactionSheetName);
     }
 
-    paintRows(transactions: Transaction[]) {
+    write(transactions: Transaction[]) {
         const sheet = this.transactionSheet()
         transactions.forEach((tr: Transaction) => {
-        sheet.appendRow(tr.export()); // TODO performance issue
-        }); 
+            sheet.appendRow(tr.export()) // TODO performance issue
+        })
+
+        // applyOnSheet(csvData: string) {
+        //   var range = this.transactionSheet().getRange(
+        //     _getFirstEmptyRowByColumnArray(), 1, csvData.length, csvData[0].length)
+        //   range.setValues(csvData)
+        // }
     }
 
-    readRows(coordinates: string) {
+    read(coordinates: string): any[] {
         const sheet = this.transactionSheet()
         return sheet.getRange(coordinates).getValues();
     }
 
-    // applyOnSheet(csvData: string) {
-    //   var range = this.transactionSheet().getRange(
-    //     _getFirstEmptyRowByColumnArray(), 1, csvData.length, csvData[0].length)
-    //   range.setValues(csvData)
-    // }
+    getTransactions(coordinates: string): Transaction[] {
+        const records = this.read(coordinates)
+        return records.map((r: (Date | string | number)[]) => new Transaction({
+                dueDate: new Date(r[0]),
+                account: r[1],
+                category: r[2],
+                summary: r[3],
+                expense: r[4],
+                income: r[5],
+            })
+        )
+    }
 }
-  
